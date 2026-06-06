@@ -462,6 +462,13 @@ services:
       VERIFY_JWT: "${FUNCTIONS_VERIFY_JWT}"
       ONESIGNAL_APP_ID: ${ONESIGNAL_APP_ID}
       ONESIGNAL_API_KEY: ${ONESIGNAL_API_KEY}
+      # Aliases: the app's edge functions read these variant names for the
+      # same OneSignal credentials (ONESIGNAL_REST_API_KEY/ONE_SIGNAL_*).
+      ONESIGNAL_REST_API_KEY: ${ONESIGNAL_API_KEY}
+      ONE_SIGNAL_API_KEY: ${ONESIGNAL_API_KEY}
+      ONE_SIGNAL_APP_ID: ${ONESIGNAL_APP_ID}
+      # Shared secret between the pg_cron dispatcher and send-daily-notification.
+      DAILY_CRON_SECRET: ${DAILY_CRON_SECRET}
       SEND_EMAIL_HOOK_SECRET: ${SEND_EMAIL_HOOK_SECRET}
     command:
       [
