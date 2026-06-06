@@ -470,6 +470,11 @@ services:
       # Shared secret between the pg_cron dispatcher and send-daily-notification.
       DAILY_CRON_SECRET: ${DAILY_CRON_SECRET}
       SEND_EMAIL_HOOK_SECRET: ${SEND_EMAIL_HOOK_SECRET}
+      # Bump this when functions change or after a redeploy to force compose to
+      # recreate this container, so it re-binds ./volumes/functions to the
+      # freshly-cloned working tree (a stale bind mount yields edge-runtime's
+      # "could not find an appropriate entrypoint" error).
+      EDGE_FUNCTIONS_RECREATE_NONCE: "20260606-1"
     command:
       [
         "start",
